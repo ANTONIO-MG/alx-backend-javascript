@@ -7,7 +7,6 @@ export default function taskBlock(trueOrFalse) {
     const task = false;
     // check if task is also true
     const task2 = true;
-
     return [task, task2];
   }
 
