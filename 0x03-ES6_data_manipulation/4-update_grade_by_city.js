@@ -1,4 +1,4 @@
-export default function updateStudentGradeByCity (students, city, newGrades) {
+export default function updateStudentGradeByCity(students, city, newGrades) {
   return students
     .filter((student) => student.location.localeCompare(city) === 0)
     .map((x) => {
