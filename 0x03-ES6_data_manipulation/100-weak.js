@@ -1,7 +1,7 @@
 const weakMap = new WeakMap();
 
 const queryAPI = (endpoint) => {
-  let queries = weakMap.get(endpoint);
+  const queries = weakMap.get(endpoint);
   if (!queries) {
     weakMap.set(endpoint, 1);
   } else if (queries >= 5) {
