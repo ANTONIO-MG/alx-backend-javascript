@@ -7,10 +7,12 @@ class StudentsController {
     readDatabase(filePath)
       .then((fields) => {
         let response = 'This is the list of our students\n';
-        const sortedFields = Object.keys(fields).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+        const sortedFields = Object.keys(fields)
+          .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
         sortedFields.forEach((field) => {
-          response += `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}\n`;
+          response += `Number of students in ${field}: ${fields[field].length}. `;
+          response += `List: ${fields[field].join(', ')}\n`;
         });
 
         res.status(200).send(response.trim());
@@ -22,7 +24,7 @@ class StudentsController {
 
   static getAllStudentsByMajor(req, res) {
     const filePath = process.argv[2];
-    const major = req.params.major;
+    const { major } = req.params;
 
     if (major !== 'CS' && major !== 'SWE') {
       res.status(500).send('Major parameter must be CS or SWE');
@@ -35,7 +37,7 @@ class StudentsController {
         if (students) {
           res.status(200).send(`List: ${students.join(', ')}`);
         } else {
-          res.status(200).send(`List: `);
+          res.status(200).send('List: ');
         }
       })
       .catch(() => {
