@@ -5,17 +5,22 @@ const app = express();
 
 const databasePath = process.argv[2];
 
+if (!databasePath) {
+  console.error('Please provide the path to the database file as a command-line argument.');
+  process.exit(1);
+}
+
 app.get('/', (req, res) => {
-  res.send('Hello Holberton School!');
+  res.type('text').send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
   countStudents(databasePath)
     .then((studentInfo) => {
-      res.send(`This is the list of our students\n${studentInfo}`);
+      res.type('text').send(`This is the list of our students\n${studentInfo}`);
     })
     .catch((error) => {
-      res.send(`This is the list of our students\n${error.message}`);
+      res.type('text').send(`This is the list of our students\n${error.message}`);
     });
 });
 

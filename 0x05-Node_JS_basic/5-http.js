@@ -16,6 +16,7 @@ const app = http.createServer((req, res) => {
         res.end(`This is the list of our students\n${studentInfo}`);
       })
       .catch((error) => {
+        res.statusCode = 500;
         res.end(`This is the list of our students\n${error.message}`);
       });
   } else {
@@ -24,6 +25,8 @@ const app = http.createServer((req, res) => {
   }
 });
 
-app.listen(1245);
+app.listen(1245, () => {
+  console.log('Server is listening on port 1245');
+});
 
 module.exports = app;
