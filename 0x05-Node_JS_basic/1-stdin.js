@@ -16,4 +16,3 @@ function great() {
 }
 
 module.exports = great();
-
