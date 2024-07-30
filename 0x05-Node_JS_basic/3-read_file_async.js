@@ -9,7 +9,7 @@ async function countStudents(path) {
       throw new Error('Cannot load the database');
     }
 
-    const headers = lines[0].split(',');
+    lines[0].split(',');
     const fieldCounts = {};
     const studentsByField = {};
 
@@ -24,7 +24,7 @@ async function countStudents(path) {
         studentsByField[field] = [];
       }
 
-      fieldCounts[field]+= 1;
+      fieldCounts[field] += 1;
       studentsByField[field].push(firstName);
     }
 
