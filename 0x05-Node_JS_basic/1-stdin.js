@@ -10,5 +10,8 @@ process.stdin.on('data', (chunk) => {
     console.log('This important software is now closing');
   }
 
-  process.exit();
+  // Ensure the message is logged before the process exits
+  setTimeout(() => {
+    process.exit();
+  }, 100);
 });
