@@ -22,11 +22,6 @@ function countStudents(path) {
     for (let i = 1; i < lines.length; i += 1) {
       const studentData = lines[i].split(',');
 
-      // Skip if the line is not valid (not matching the headers count)
-      if (studentData.length !== headers.length) {
-        continue;
-      }
-
       const firstName = studentData[0];
       const field = studentData[3];
 
