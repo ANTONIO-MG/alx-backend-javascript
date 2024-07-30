@@ -15,4 +15,4 @@ function great() {
   });
 }
 
-module.exports = great();
+great();
