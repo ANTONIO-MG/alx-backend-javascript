@@ -13,7 +13,7 @@ function countStudents(path) {
     }
 
     // Extract the headers
-    const headers = lines[0].split(',');
+    lines[0].split(',');
 
     // Initialize a dictionary to store the students count by field
     const fieldCounts = {};
