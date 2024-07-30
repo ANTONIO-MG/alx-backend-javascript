@@ -6,10 +6,10 @@ async function countStudents(path) {
     const lines = data.split('\n').filter((line) => line.trim() !== '');
 
     if (lines.length === 0) {
+      console.log('Cannot load the database');
       throw new Error('Cannot load the database');
     }
 
-    lines[0].split(',');
     const fieldCounts = {};
     const studentsByField = {};
 
@@ -29,14 +29,13 @@ async function countStudents(path) {
     }
 
     const totalStudents = Object.values(fieldCounts).reduce((acc, count) => acc + count, 0);
-    let result = `Number of students: ${totalStudents}\n`;
+    console.log(`Number of students: ${totalStudents}`);
 
     for (const [field, count] of Object.entries(fieldCounts)) {
-      result += `Number of students in ${field}: ${count}. List: ${studentsByField[field].join(', ')}\n`;
+      console.log(`Number of students in ${field}: ${count}. List: ${studentsByField[field].join(', ')}`);
     }
-
-    return result.trim();
   } catch (error) {
+    console.log('Cannot load the database');
     throw new Error('Cannot load the database');
   }
 }
